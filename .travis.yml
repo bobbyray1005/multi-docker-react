@@ -20,3 +20,15 @@ after_success:
   - docker push renovatiodoc/multi-nginx
   - docker push renovatiodoc/multi-server
   - docker push renovatiodoc/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker-react
+  env: MultiDockerReact-env
+  bucket_name: elasticbeanstalk-us-east-2-597814523986
+  bucket_path: multi-docker-react
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
